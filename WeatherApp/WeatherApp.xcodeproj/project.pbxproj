@@ -19,6 +19,7 @@
 		E718DC0F2837965700C884C2 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DC0E2837965700C884C2 /* SearchScreen.swift */; };
 		E79930392837D44E00BDD7E7 /* WeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79930382837D44D00BDD7E7 /* WeatherController.swift */; };
 		E799303B2837DEBC00BDD7E7 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E799303A2837DEBC00BDD7E7 /* Weather.swift */; };
+		E7BE1C1D2838B34D00191F92 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BE1C1C2838B34D00191F92 /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		E718DC0E2837965700C884C2 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 		E79930382837D44D00BDD7E7 /* WeatherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherController.swift; sourceTree = "<group>"; };
 		E799303A2837DEBC00BDD7E7 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		E7BE1C1C2838B34D00191F92 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			children = (
 				E79930382837D44D00BDD7E7 /* WeatherController.swift */,
 				E799303A2837DEBC00BDD7E7 /* Weather.swift */,
+				E7BE1C1C2838B34D00191F92 /* WeatherModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				E718DBE12837917B00C884C2 /* ContentView.swift in Sources */,
 				E718DBDF2837917B00C884C2 /* WeatherAppApp.swift in Sources */,
 				E718DC0A283795A700C884C2 /* Constants.swift in Sources */,
+				E7BE1C1D2838B34D00191F92 /* WeatherModel.swift in Sources */,
 				E799303B2837DEBC00BDD7E7 /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

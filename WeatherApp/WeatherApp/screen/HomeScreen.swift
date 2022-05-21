@@ -10,22 +10,22 @@ import SwiftUI
 
 struct HomeScreen: View {
     
-    let controller = WeatherController()
+    @StateObject var controller = WeatherController()
     
     var body: some View {
         ZStack{
             Color.black
                 .ignoresSafeArea()
             VStack{
-                Text("Galle")
+                Text(controller.weather?.name ?? "--")
                     .font(.system(size: 30, weight: .medium, design: .rounded))
-                Text("Dizzer")
+                Text(controller.weather?.description ?? "--")
                     .font(.system(size: 26, weight: .black, design: .rounded))
-                Image(systemName: "cloud")
+                Image(systemName: controller.weather?.cloudImage ?? "cloud")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
-                Text("14")
+                Text("\(controller.weather?.temp ?? 0)")
                     .font(.system(size: 60, weight: .heavy, design: .rounded))
                     .foregroundColor(.yellow)
                     

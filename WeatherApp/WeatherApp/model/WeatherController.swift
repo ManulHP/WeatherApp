@@ -11,6 +11,8 @@ class WeatherController: ObservableObject {
     /// Base URL	
     let baseURL: String = "https://api.openweathermap.org/data/2.5/weather?appid=\(API.key)"
     
+    @Published var weather: WeatherModel?
+    
     ///  calling the api
     func fetchWeatherData() async {
         let lat = 6.053519
@@ -26,6 +28,11 @@ class WeatherController: ObservableObject {
             
             let weatherData = try JSONDecoder().decode(WeatherData.self, from: data)
             print(weatherData)
+            
+            DispatchQueue.main.async {
+//                self.weather = weatherData
+                self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0, description: weatherData.weather.first?.description ?? "", temp: weatherData.main.temp, name: weatherData.name)
+            }
         }catch {
             print(1)
             print(error.localizedDescription)
