@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 struct HomeScreen: View {
+    
+    let controller = WeatherController()
+    
     var body: some View {
         ZStack{
             Color.black
@@ -29,6 +32,11 @@ struct HomeScreen: View {
             }
             .foregroundColor(.white)
             
+        }
+        .onAppear{
+            Task {
+                await controller.fetchWeatherData()
+            }
         }
     }
 }
