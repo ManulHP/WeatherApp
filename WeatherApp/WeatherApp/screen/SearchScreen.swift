@@ -9,9 +9,42 @@ import Foundation
 import SwiftUI
 
 struct SearchScreen: View {
+    
+    @State private var textController = ""
+    @StateObject var controller = WeatherController()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            HStack{
+                TextField("Enter a city", text: $textController)
+                    .textFieldStyle(.roundedBorder)
+                
+                Button {
+                    // action
+                    Task {
+                        await controller.searchCity(cityName: self.textController)
+                    }
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .padding()
+                }
+            }
+            
+            if let data = controller.weather?.detailData {
+                List(data) {
+                    item in HStack {
+                        Image(systemName: item.icon)
+                        Text(item.title)
+                            .font(.system(size: 16, weight: .regular, design: .rounded))
+                        Spacer()
+                        Text("\(item.value)")
+                            .font(.system(size: 20, weight: .regular, design: .rounded))
+                    }
+                }
+            } else {
+                Spacer()
+            }
+        } .padding()
     }
 }
 

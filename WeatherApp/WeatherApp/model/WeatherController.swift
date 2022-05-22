@@ -21,6 +21,10 @@ class WeatherController: ObservableObject {
         let url = "\(baseURL)&lat=\(lat)&lon=\(lon)&units=metric"
         print(url)
         
+        await requestWeatherData(url: url)
+    }
+    
+    func requestWeatherData(url: String) async {
         guard let url = URL(string: url) else { return }
         
         do{
@@ -32,7 +36,6 @@ class WeatherController: ObservableObject {
             DispatchQueue.main.async {
 //                self.weather = weatherData
 //                self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0, description: weatherData.weather.first?.description ?? "", temp: weatherData.main.temp, name: weatherData.name)
-                
                 self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0,
                                             description: weatherData.weather.first?.description ?? "",
                                             temp: weatherData.main.temp,
@@ -48,4 +51,11 @@ class WeatherController: ObservableObject {
             print(error.localizedDescription)
         }
     }
+    
+    func searchCity(cityName: String) async {
+        let url = "\(baseURL)&q=\(cityName)&units=metric"
+        
+        await requestWeatherData(url: url)
+    }
+    
 }

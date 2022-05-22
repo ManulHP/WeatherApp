@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct WeatherModel {
     let id: Int
@@ -19,7 +20,7 @@ struct WeatherModel {
     let cloudPercentage: Int	
     
     var temperature: String {
-        return String(format: "%.1", temp)
+        return String(format: "%.1f", temp)
     }
     
     var cloudImage: String {
@@ -39,6 +40,19 @@ struct WeatherModel {
         default:
             return "cloud"
         }
-            
     }
+    
+    var detailData: [MoreInfo] {
+        return [
+            .init(title: "Temperature", icon: "thermometer", value: temperature),
+            .init(title: "Humidity", icon: "drop.fill", value: "\(humidity)"),
+            .init(title: "Pressure", icon: "digitalcrown.horizontal.press.fill", value: "\(pressure)"),
+            .init(title: "Wind Speed", icon: "wind", value: "\(windSpeed)"),
+            .init(title: "Wind Direction", icon: "arrow.up.left.circle", value:"\(direction)"),
+            .init(title: "Clouds", icon: "icloud", value: "\(cloudPercentage)"),
+            
+        ]
+    }
+    
 }
+

@@ -25,7 +25,7 @@ struct HomeScreen: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
-                Text("\(controller.weather?.temp ?? 0)")
+                Text("\(controller.weather?.temperature ?? "--")")
                     .font(.system(size: 60, weight: .heavy, design: .rounded))
                     .foregroundColor(.yellow)
                     
