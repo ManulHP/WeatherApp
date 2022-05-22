@@ -25,7 +25,7 @@ struct WeatherModel {
     }
     
     var feelLike: String {
-        return String(format: "%.1f", feelsLike)
+        return String(format: "%.1f", feelsLike	)
     }
     
     var windSpeedInOneDP: String {
@@ -53,12 +53,12 @@ struct WeatherModel {
     
     var detailData: [MoreInfo] {
         return [
-            .init(title: "Temperature", icon: "thermometer", value: temperature),
-            .init(title: "Humidity", icon: "drop.fill", value: "\(humidity)"),
-            .init(title: "Pressure", icon: "digitalcrown.horizontal.press.fill", value: "\(pressure)"),
-            .init(title: "Wind Speed", icon: "wind", value: "\(windSpeedInOneDP)"),
-            .init(title: "Wind Direction", icon: "arrow.up.left.circle", value:"\(direction)"),
-            .init(title: "Clouds", icon: "icloud", value: "\(cloudPercentage)"),
+            .init(title: "Temperature", icon: "thermometer", value: temperature, color: .red),
+            .init(title: "Humidity", icon: "drop.fill", value: "\(humidity)", color: .blue),
+            .init(title: "Pressure", icon: "digitalcrown.horizontal.press.fill", value: "\(pressure)", color: .green),
+            .init(title: "Wind Speed", icon: "wind", value: "\(windSpeedInOneDP)", color: .orange),
+            .init(title: "Wind Direction", icon: "arrow.up.left.circle", value:"\(direction)", color: .yellow),
+            .init(title: "Clouds", icon: "icloud", value: "\(cloudPercentage)", color: .cyan),
             
         ]
     }

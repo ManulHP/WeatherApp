@@ -34,13 +34,18 @@ struct SearchScreen: View {
                 List(data) {
                     item in HStack {
                         Image(systemName: item.icon)
+                            .foregroundColor(item.color)
                         Text(item.title)
                             .font(.system(size: 16, weight: .regular, design: .rounded))
                         Spacer()
                         Text("\(item.value)")
                             .font(.system(size: 20, weight: .regular, design: .rounded))
                     }
+                    .listRowSeparator(.hidden)
                 }
+                .listStyle(.plain)
+               
+                
             } else {
                 Spacer()
             }
