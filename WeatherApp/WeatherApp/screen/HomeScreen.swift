@@ -28,10 +28,50 @@ struct HomeScreen: View {
                 Text("\(controller.weather?.temperature ?? "--")")
                     .font(.system(size: 60, weight: .heavy, design: .rounded))
                     .foregroundColor(.yellow)
+                
+                Text("Feels like")
+                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                    .foregroundColor(.white)
+                
+                Text("\(controller.weather?.feelLike ?? "--")")
+                    .font(.system(size: 40, weight: .heavy, design: .rounded))
+                    .foregroundColor(.yellow)
+                
+                Spacer()
+                    .frame(height: 50)
+                
+                
+                
+                HStack {
+                    VStack {
+                        Image(systemName: "drop.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.blue)
+                        Text("\(controller.weather?.humidity ?? 0)%")
+                            .font(.system(size: 22, weight: .semibold, design: .rounded))
+                            .foregroundColor(.white)
+                    }
+                    Spacer()
+                        .frame(width: 50)
+                    VStack {
+                        Image(systemName: "wind")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.orange)
+                        Text("\(controller.weather?.windSpeedInOneDP ?? "0")km/h")
+                            .font(.system(size: 22, weight: .semibold, design: .rounded))
+                            .foregroundColor(.white)
+                    }
+                
+                }.padding([.horizontal], 50)
+                    
                     
             }
             .foregroundColor(.white)
-            
+        
         }
         .onAppear{
             Task {

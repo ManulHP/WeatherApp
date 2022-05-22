@@ -44,7 +44,8 @@ class WeatherController: ObservableObject {
                                             pressure: weatherData.main.pressure,
                                             windSpeed: weatherData.wind.speed,
                                             direction: weatherData.wind.deg,
-                                            cloudPercentage: weatherData.clouds.all)
+                                            cloudPercentage: weatherData.clouds.all,
+                                            feelsLike: weatherData.main.feels_like)
             }
         }catch {
             print(1)

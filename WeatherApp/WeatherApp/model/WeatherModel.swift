@@ -17,10 +17,19 @@ struct WeatherModel {
     let pressure: Int
     let windSpeed: Double
     let direction: Int
-    let cloudPercentage: Int	
+    let cloudPercentage: Int
+    let feelsLike: Double
     
     var temperature: String {
         return String(format: "%.1f", temp)
+    }
+    
+    var feelLike: String {
+        return String(format: "%.1f", feelsLike)
+    }
+    
+    var windSpeedInOneDP: String {
+        return String(format: "%.1f", windSpeed)
     }
     
     var cloudImage: String {
@@ -47,7 +56,7 @@ struct WeatherModel {
             .init(title: "Temperature", icon: "thermometer", value: temperature),
             .init(title: "Humidity", icon: "drop.fill", value: "\(humidity)"),
             .init(title: "Pressure", icon: "digitalcrown.horizontal.press.fill", value: "\(pressure)"),
-            .init(title: "Wind Speed", icon: "wind", value: "\(windSpeed)"),
+            .init(title: "Wind Speed", icon: "wind", value: "\(windSpeedInOneDP)"),
             .init(title: "Wind Direction", icon: "arrow.up.left.circle", value:"\(direction)"),
             .init(title: "Clouds", icon: "icloud", value: "\(cloudPercentage)"),
             
