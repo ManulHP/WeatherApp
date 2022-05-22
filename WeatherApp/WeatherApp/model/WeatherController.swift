@@ -31,7 +31,17 @@ class WeatherController: ObservableObject {
             
             DispatchQueue.main.async {
 //                self.weather = weatherData
-                self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0, description: weatherData.weather.first?.description ?? "", temp: weatherData.main.temp, name: weatherData.name)
+//                self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0, description: weatherData.weather.first?.description ?? "", temp: weatherData.main.temp, name: weatherData.name)
+                
+                self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0,
+                                            description: weatherData.weather.first?.description ?? "",
+                                            temp: weatherData.main.temp,
+                                            name: weatherData.name,
+                                            humidity: weatherData.main.humidity,
+                                            pressure: weatherData.main.pressure,
+                                            windSpeed: weatherData.wind.speed,
+                                            direction: weatherData.wind.deg,
+                                            cloudPercentage: weatherData.clouds.all)
             }
         }catch {
             print(1)

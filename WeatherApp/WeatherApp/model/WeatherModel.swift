@@ -12,6 +12,11 @@ struct WeatherModel {
     let description: String
     let temp: Double
     let name: String
+    let humidity: Int
+    let pressure: Int
+    let windSpeed: Double
+    let direction: Int
+    let cloudPercentage: Int	
     
     var temperature: String {
         return String(format: "%.1", temp)
