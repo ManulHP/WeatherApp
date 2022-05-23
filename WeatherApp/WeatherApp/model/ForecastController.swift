@@ -38,13 +38,13 @@ class ForecastController: ObservableObject {
             print(weatherData)
             
             DispatchQueue.main.async {
-                var forcastDetailData = weatherData.daily.map{ daily in MoreForecast(
-                    dt: daily.dt,
-                    temp: daily.temp.day,
+                let forcastDetailData = weatherData.daily.map { daily in MoreForecast(
+                    dt: daily.dt.unixToDate()!,
+                    temp: String(format: "%.1f", daily.temp.day),
                     pressure: daily.pressure,
                     humidity: daily.humidity,
                     clouds: daily.clouds,
-                    wind_speed: daily.wind_speed,
+                    wind_speed: String(format: "%.1f", daily.wind_speed),
                     weather: daily.weather.first!)}
                 
                 self.forecast = ForecastModel(forecast: forcastDetailData)

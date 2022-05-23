@@ -28,34 +28,55 @@ struct ForecastScreen: View {
                     List (0..<6) { index in
                         let item = data[index]
                         Section("\(item.dt)") {
-                            HStack(spacing: 20) {
-                                Image(systemName: "icloud")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 50, height: 50)
-                                    .foregroundColor(.cyan)
-                                VStack (alignment: .leading) {
-                                    Text("\(item.weather.description)")
-                                    Text("\(item.temp)")
-                                    HStack {
-                                        Image(systemName: "cloud.fill")
-                                            .foregroundColor(.gray)
-                                        Text("\(00)%")
-                                        Image(systemName: "drop")
-                                            .foregroundColor(.blue)
-                                        Text("\(item.wind_speed)")
-                                    }
-                                    Text("Humidity: \(00)%")
+                            HStack (alignment: .center) {
+                                VStack {
+                                    Image(systemName: "icloud")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(.cyan)
+                                    Text(item.weather.description)
+                                    Text("\(item.clouds)%")
                                 }
-                            }
+                                Spacer()
+                                VStack {
+                                    Image(systemName: "thermometer")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(.red)
+                                    Text(item.temp)
+                                }
+                                Spacer()
+                                VStack {
+                                    Image(systemName: "wind")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(.orange)
+                                    Text(item.wind_speed)
+                                }
+                                Spacer()
+                                VStack {
+                                    Image(systemName: "drop.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(.blue)
+                                    Text("\(item.humidity)")
+                                }
+                                
+                            }.padding()
                         }
                     }
                     .listStyle(PlainListStyle())
-                    .onChange(of: weatherUnits ){_ in
-                        Task{
+                    .onChange(of: weatherUnits) {
+                            _ in  Task{
                             await manager.fetchForecastData(weatherUnit: self.weatherUnits)
                         }
                     }
+                }else {
+                    Spacer()
                 }
                 
                 

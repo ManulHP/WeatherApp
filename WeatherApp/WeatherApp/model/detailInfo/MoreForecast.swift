@@ -10,11 +10,11 @@ import SwiftUI
 
 struct MoreForecast: Identifiable {
     let id = UUID()
-    let dt: Int
-    let temp: Double
+    let dt: String
+    let temp: String
     let pressure: Int
     let humidity: Int
     let clouds: Int
-    let wind_speed: Double
+    let wind_speed: String
     let weather: Weather
 }

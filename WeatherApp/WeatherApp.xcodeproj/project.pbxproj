@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7064D58283BB7140070ED0C /* unix+date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7064D57283BB7140070ED0C /* unix+date.swift */; };
 		E718DBDF2837917B00C884C2 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DBDE2837917B00C884C2 /* WeatherAppApp.swift */; };
 		E718DBE12837917B00C884C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DBE02837917B00C884C2 /* ContentView.swift */; };
 		E718DBE32837917C00C884C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E718DBE22837917C00C884C2 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E7064D57283BB7140070ED0C /* unix+date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "unix+date.swift"; sourceTree = "<group>"; };
 		E718DBDB2837917B00C884C2 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E718DBDE2837917B00C884C2 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		E718DBE02837917B00C884C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E7064D56283BB6EC0070ED0C /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				E7064D57283BB7140070ED0C /* unix+date.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		E718DBD22837917B00C884C2 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,7 @@
 		E718DBDD2837917B00C884C2 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				E7064D56283BB6EC0070ED0C /* extension */,
 				E79930362837D41200BDD7E7 /* model */,
 				E718DC0B2837961C00C884C2 /* screen */,
 				E718DC082837956D00C884C2 /* util */,
@@ -343,6 +354,7 @@
 			files = (
 				E718DC0D2837963C00C884C2 /* HomeScreen.swift in Sources */,
 				E7E50D9A283B535400B2B67D /* ForecastModel.swift in Sources */,
+				E7064D58283BB7140070ED0C /* unix+date.swift in Sources */,
 				E718DC0F2837965700C884C2 /* SearchScreen.swift in Sources */,
 				E79930392837D44E00BDD7E7 /* WeatherController.swift in Sources */,
 				E718DBE12837917B00C884C2 /* ContentView.swift in Sources */,
