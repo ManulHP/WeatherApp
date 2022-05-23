@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum Units: String {
+    case metric = "metric"
+    case imperial = "imperial"
+}
+
 class WeatherController: ObservableObject {
     /// Base URL	
     let baseURL: String = "https://api.openweathermap.org/data/2.5/weather?appid=\(API.key)"

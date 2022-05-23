@@ -18,6 +18,10 @@ struct ContentView: View {
                 .tabItem {
                     Label("Current", systemImage: "magnifyingglass")
                 }
+            ForecastScreen()
+                .tabItem{
+                    Label("Forecast", systemImage: "house")
+                }
         }
     }
 }
