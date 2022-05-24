@@ -10,7 +10,7 @@ import SwiftUI
 
 class ForecastController: ObservableObject {
     /// Base URL
-    let baseURL: String = "https://api.openweathermap.org/data/2.5/onecall?appid=\(API.key)&exclude=hourly,minutely"
+    let baseURL: String = "https://api.openweathermap.org/data/2.5/onecall?appid=\(API.key)&exclude=minutely"
     
     @Published var forecast: ForecastModel?
     private var weatherUnit: Units = .metric
@@ -45,10 +45,21 @@ class ForecastController: ObservableObject {
                     humidity: daily.humidity,
                     clouds: daily.clouds,
                     wind_speed: String(format: "%.1f", daily.wind_speed),
-                    weather: daily.weather.first!)}
+                    weather: daily.weather.first!,
+                    icons: getCloudIcon(id: daily.weather.first?.id ?? 0)
+                )}
                 
-                self.forecast = ForecastModel(forecast: forcastDetailData)
+                
+                let hourData = weatherData.hourly.map {hourly in MoreHourly(dt: hourly.dt.unixToDate()!,
+                                                                            temp: "\(hourly.temp)",
+                                                                            weather: hourly.weather.first!,
+                                                                            icons: getCloudIcon(id: hourly.weather.first?.id ?? 0)
+                )}
+                
+                self.forecast = ForecastModel(forecast: forcastDetailData, hourlyForecastData: hourData)
+                
             }
+            print("sadas ",weatherData)
         }catch {
             print("error")
             print(error.localizedDescription)

@@ -10,4 +10,5 @@ import SwiftUI
 
 struct ForecastModel {
     let forecast: [MoreForecast]
+    let hourlyForecastData: [MoreHourly]
 }

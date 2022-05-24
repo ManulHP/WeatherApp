@@ -14,7 +14,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            SearchScreen()
+            IntervalScreen()
                 .tabItem {
                     Label("Current", systemImage: "magnifyingglass")
                 }
@@ -22,7 +22,12 @@ struct ContentView: View {
                 .tabItem{
                     Label("Forecast", systemImage: "house")
                 }
+            IntervalScreen()
+                .tabItem{
+                    Label("Interval", systemImage: "house")
+                }
         }
+    
     }
 }
 

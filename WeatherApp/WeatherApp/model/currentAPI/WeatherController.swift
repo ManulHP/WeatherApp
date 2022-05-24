@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Units: String {
     case metric = "metric"
@@ -33,25 +34,31 @@ class WeatherController: ObservableObject {
         guard let url = URL(string: url) else { return }
         
         do{
-            let (data,_) = try await URLSession.shared.data(from: url)
+            let (data, code) = try await URLSession.shared.data(from: url)
             
             let weatherData = try JSONDecoder().decode(WeatherData.self, from: data)
             print(weatherData)
-            
-            DispatchQueue.main.async {
-//                self.weather = weatherData
-//                self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0, description: weatherData.weather.first?.description ?? "", temp: weatherData.main.temp, name: weatherData.name)
-                self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0,
-                                            description: weatherData.weather.first?.description ?? "",
-                                            temp: weatherData.main.temp,
-                                            name: weatherData.name,
-                                            humidity: weatherData.main.humidity,
-                                            pressure: weatherData.main.pressure,
-                                            windSpeed: weatherData.wind.speed,
-                                            direction: weatherData.wind.deg,
-                                            cloudPercentage: weatherData.clouds.all,
-                                            feelsLike: weatherData.main.feels_like)
+            if let response = code as? HTTPURLResponse  {
+                print("asdasd: ", response.statusCode)
+                if(response.statusCode == 200){
+                    DispatchQueue.main.async {
+        //                self.weather = weatherData
+        //                self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0, description: weatherData.weather.first?.description ?? "", temp: weatherData.main.temp, name: weatherData.name)
+                        self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0,
+                                                    description: weatherData.weather.first?.description ?? "",
+                                                    temp: weatherData.main.temp,
+                                                    name: weatherData.name,
+                                                    humidity: weatherData.main.humidity,
+                                                    pressure: weatherData.main.pressure,
+                                                    windSpeed: weatherData.wind.speed,
+                                                    direction: weatherData.wind.deg,
+                                                    cloudPercentage: weatherData.clouds.all,
+                                                    feelsLike: weatherData.main.feels_like)
+                    }
+                } 
             }
+            
+            
         }catch {
             print(1)
             print(error.localizedDescription)

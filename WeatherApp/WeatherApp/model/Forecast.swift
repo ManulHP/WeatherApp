@@ -11,6 +11,7 @@ import SwiftUI
 struct ForecastData: Decodable {
     let current: Current
     let daily: [OCDaily]
+    let hourly: [Hourly]
 }
 
 struct Current: Decodable {
@@ -35,4 +36,10 @@ struct OCDaily: Decodable {
 
 struct Temperature: Decodable {
     let day: Double
+}
+
+struct Hourly: Decodable {
+    let dt: Int
+    let temp: Double
+    let weather: [Weather]
 }

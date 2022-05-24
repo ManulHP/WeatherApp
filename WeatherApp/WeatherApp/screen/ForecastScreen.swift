@@ -30,7 +30,7 @@ struct ForecastScreen: View {
                         Section("\(item.dt)") {
                             HStack (alignment: .center) {
                                 VStack {
-                                    Image(systemName: "icloud")
+                                    Image(systemName: item.icons)
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 25, height: 25)

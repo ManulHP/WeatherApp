@@ -17,4 +17,13 @@ struct MoreForecast: Identifiable {
     let clouds: Int
     let wind_speed: String
     let weather: Weather
+    let icons: String
+}
+
+struct MoreHourly: Identifiable {
+    let id = UUID()
+    let dt: String
+    let temp: String
+    let weather: Weather
+    let icons: String
 }
