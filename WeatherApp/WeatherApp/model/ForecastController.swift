@@ -50,11 +50,16 @@ class ForecastController: ObservableObject {
                 )}
                 
                 
-                let hourData = weatherData.hourly.map {hourly in MoreHourly(dt: hourly.dt.unixToDate()!,
+                var hourData = weatherData.hourly.map {hourly in MoreHourly(dt: hourly.dt.unixToDate()!,
                                                                             temp: "\(hourly.temp)",
                                                                             weather: hourly.weather.first!,
-                                                                            icons: getCloudIcon(id: hourly.weather.first?.id ?? 0)
+                                                                            icons: getCloudIcon(id: hourly.weather.first?.id ?? 0),
+                                                                            hour: hourly.dt.unixToDate()!.get(.hour)
                 )}
+                
+                hourData = hourData.filter({ items in
+                    return items.hour % 3 == 0
+                })
                 
                 self.forecast = ForecastModel(forecast: forcastDetailData, hourlyForecastData: hourData)
                 

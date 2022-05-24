@@ -26,4 +26,5 @@ struct MoreHourly: Identifiable {
     let temp: String
     let weather: Weather
     let icons: String
+    let hour: Int
 }

@@ -21,7 +21,7 @@ struct IntervalScreen: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
-                Text("144")
+                Text("144°C")
                     .font(.system(size: 60, weight: .heavy, design: .rounded))
                     .foregroundColor(.yellow)
             }

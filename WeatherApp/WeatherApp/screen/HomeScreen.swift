@@ -25,7 +25,7 @@ struct HomeScreen: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
-                Text("\(controller.weather?.temperature ?? "--")")
+                Text("\(controller.weather?.temperature ?? "--")°C")
                     .font(.system(size: 60, weight: .heavy, design: .rounded))
                     .foregroundColor(.yellow)
                 
@@ -33,7 +33,7 @@ struct HomeScreen: View {
                     .font(.system(size: 16, weight: .medium, design: .rounded))
                     .foregroundColor(.white)
                 
-                Text("\(controller.weather?.feelLike ?? "--")")
+                Text("\(controller.weather?.feelLike ?? "--")°C")
                     .font(.system(size: 40, weight: .heavy, design: .rounded))
                     .foregroundColor(.yellow)
                 
