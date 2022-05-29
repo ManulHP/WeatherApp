@@ -18,6 +18,7 @@ class WeatherController: ObservableObject {
     let baseURL: String = "https://api.openweathermap.org/data/2.5/weather?appid=\(API.key)"
     
     @Published var weather: WeatherModel?
+    private var weatherUnit: Units = .metric
     
     ///  calling the api
     func fetchWeatherData() async {
@@ -46,7 +47,7 @@ class WeatherController: ObservableObject {
         //                self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0, description: weatherData.weather.first?.description ?? "", temp: weatherData.main.temp, name: weatherData.name)
                         self.weather = WeatherModel(id: weatherData.weather.first?.id ?? 0,
                                                     description: weatherData.weather.first?.description ?? "",
-                                                    temp: weatherData.main.temp,
+                                                    temp: self.weatherUnit == .metric ? weatherData.main.temp : weatherData.main.temp,
                                                     name: weatherData.name,
                                                     humidity: weatherData.main.humidity,
                                                     pressure: weatherData.main.pressure,
@@ -65,8 +66,9 @@ class WeatherController: ObservableObject {
         }
     }
     
-    func searchCity(cityName: String) async {
-        let url = "\(baseURL)&q=\(cityName)&units=metric"
+    func searchCity(cityName: String, weatherUnit: Units) async {
+        self.weatherUnit = weatherUnit
+        let url = "\(baseURL)&q=\(cityName)&units=\(weatherUnit)"
         
         await requestWeatherData(url: url)
     }

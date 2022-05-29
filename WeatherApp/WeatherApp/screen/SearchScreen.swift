@@ -13,7 +13,7 @@ struct SearchScreen: View {
     @State private var textController = ""
     @StateObject var controller = WeatherController()
 
-    
+    @State private var weatherUnits: Units = .metric
     
     var body: some View {
         ZStack {
@@ -26,13 +26,22 @@ struct SearchScreen: View {
                     Button {
                         // action
                         Task {
-                            await controller.searchCity(cityName: self.textController)
+                            await controller.searchCity(cityName: self.textController, weatherUnit: self.weatherUnits)
                         }
                     } label: {
                         Image(systemName: "magnifyingglass")
                             .padding()
                     }
                 }
+                
+                Picker("", selection: $weatherUnits) {
+                    Text("Metric")
+                        .tag(Units.metric)
+                    Text("Imperial")
+                        .tag(Units.imperial)
+                }
+                .pickerStyle(.segmented)
+                .padding()
                
             
                 if let data = controller.weather?.detailData {
@@ -44,8 +53,26 @@ struct SearchScreen: View {
                                 .font(.system(size: 16, weight: .regular, design: .rounded))
                                
                             Spacer()
-                            Text("\(item.value)")
+                            if item.title == "Temperature" {
+                                Text(self.weatherUnits == .metric ? "\(item.value)°C" : "\(item.value)°F")
+                                    .font(.system(size: 20, weight: .regular, design: .rounded))
+                            }else if (item.title == "Humidity"){
+                                Text("\(item.value)%")
+                                    .font(.system(size: 20, weight: .regular, design: .rounded))
+                            }else if (item.title == "Pressure"){
+                                Text("\(item.value)")
+                                    .font(.system(size: 20, weight: .regular, design: .rounded))
+                            }else if (item.title == "Wind Speed"){
+                                Text(self.weatherUnits == .metric ? "\(item.value)km/h" : "\(item.value)m/h")
+                                    .font(.system(size: 20, weight: .regular, design: .rounded))
+                            }else if (item.title == "Clouds"){
+                                Text("\(item.value)%")
+                                    .font(.system(size: 20, weight: .regular, design: .rounded))
+                            } else {
+                                Text("\(item.value)°se")
                                 .font(.system(size: 20, weight: .regular, design: .rounded))
+                                
+                            }
                                 
                         }
                         .listRowSeparator(.hidden)
@@ -53,6 +80,11 @@ struct SearchScreen: View {
                     
                     }
                     .listStyle(.plain)
+                    .onChange(of: weatherUnits) {
+                            _ in  Task{
+                                await controller.searchCity(cityName: self.textController,weatherUnit: self.weatherUnits)
+                        }
+                    }
                    
                     
                 } else {
