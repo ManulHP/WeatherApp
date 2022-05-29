@@ -15,21 +15,22 @@ struct IntervalScreen: View {
     
     var body: some View {
         VStack {
-            Text("\(Date())")
-            HStack {
-                Image(systemName: "cloud")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
-                Text("144°C")
-                    .font(.system(size: 60, weight: .heavy, design: .rounded))
-                    .foregroundColor(.yellow)
-            }
-            Text("Dizzy")
-                .font(.system(size: 18, weight: .black, design: .rounded))
-            
-            if let data = manager.forecast?.hourlyForecastData {
-                List (data) { item in
+            if let weather = manager.forecast {
+                if let current = weather.currentData {
+                    Text("\(current.dt)")
+                    HStack {
+                        Image(systemName: current.icons)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100)
+                        Text("\(current.temp)°C")
+                            .font(.system(size: 60, weight: .heavy, design: .rounded))
+                            .foregroundColor(.yellow)
+                    }
+                    Text("\(current.weather.description)")
+                        .font(.system(size: 18, weight: .black, design: .rounded))
+                }
+                List (weather.hourlyForecastData) { item in
                     HStack (alignment: .center) {
                         Image(systemName: item.icons)
                             .resizable()
@@ -42,7 +43,7 @@ struct IntervalScreen: View {
                             Text(item.dt)
                         }
                         Spacer()
-                        Text("\(item.temp)")
+                        Text("\(item.temp)°C")
                         
                     
                         
@@ -50,9 +51,11 @@ struct IntervalScreen: View {
                     .padding()
                 }
                 .listStyle(PlainListStyle())
-            } else {
+            }else {
                 Spacer()
             }
+            
+            
         }
         .onAppear {
             Task {

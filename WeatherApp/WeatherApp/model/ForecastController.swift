@@ -57,11 +57,20 @@ class ForecastController: ObservableObject {
                                                                             hour: hourly.dt.unixToDate()!.get(.hour)
                 )}
                 
+                let first = weatherData.hourly.first!
+                let current = MoreHourly(dt: first.dt.unixToDate(date: .complete, time: .shortened)!,
+                                                     temp: "\(first.temp)",
+                                                     weather: first.weather.first!,
+                                         icons:getCloudIcon(id:first.weather.first!.id),
+                                                     hour: first.dt.unixToDate()!.get(.hour))
+                
                 hourData = hourData.filter({ items in
                     return items.hour % 3 == 0
                 })
                 
-                self.forecast = ForecastModel(forecast: forcastDetailData, hourlyForecastData: hourData)
+                
+                
+                self.forecast = ForecastModel(forecast: forcastDetailData, hourlyForecastData: hourData, currentData: current)
                 
             }
             print("sadas ",weatherData)
