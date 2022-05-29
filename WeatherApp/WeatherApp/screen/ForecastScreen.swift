@@ -45,7 +45,7 @@ struct ForecastScreen: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 25, height: 25)
                                         .foregroundColor(.red)
-                                    Text(item.temp)
+                                    Text(self.weatherUnits == .metric ? "\(item.temp)°C" : "\(item.temp)°F")
                                 }
                                 Spacer()
                                 VStack {
@@ -54,7 +54,7 @@ struct ForecastScreen: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 25, height: 25)
                                         .foregroundColor(.orange)
-                                    Text(item.wind_speed)
+                                    Text(self.weatherUnits == .metric ? "\(item.wind_speed)km/h" : "\(item.wind_speed)m/h")
                                 }
                                 Spacer()
                                 VStack {
@@ -63,7 +63,7 @@ struct ForecastScreen: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 25, height: 25)
                                         .foregroundColor(.blue)
-                                    Text("\(item.humidity)")
+                                    Text("\(item.humidity)%")
                                 }
                                 
                             }.padding()

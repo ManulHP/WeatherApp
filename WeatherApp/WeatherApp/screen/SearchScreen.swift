@@ -69,7 +69,7 @@ struct SearchScreen: View {
                                 Text("\(item.value)%")
                                     .font(.system(size: 20, weight: .regular, design: .rounded))
                             } else {
-                                Text("\(item.value)°se")
+                                Text("\(item.value)°")
                                 .font(.system(size: 20, weight: .regular, design: .rounded))
                                 
                             }
