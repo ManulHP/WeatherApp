@@ -21,7 +21,7 @@ struct HomeScreen: View {
                     .font(.system(size: 30, weight: .medium, design: .rounded))
                 Text(controller.weather?.description ?? "--")
                     .font(.system(size: 26, weight: .black, design: .rounded))
-                Image(systemName: controller.weather?.cloudImage ?? "cloud")
+                Image(systemName: getCloudIcon(id: controller.weather?.id ?? 800))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)

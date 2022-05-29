@@ -18,6 +18,7 @@ struct IntervalScreen: View {
             if let weather = manager.forecast {
                 if let current = weather.currentData {
                     Text("\(current.dt)")
+                        .font(.system(size: 18, weight: .light, design: .rounded))
                     HStack {
                         Image(systemName: current.icons)
                             .resizable()
@@ -37,8 +38,9 @@ struct IntervalScreen: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 25, height: 25)
                             .foregroundColor(.cyan)
-                        
-                        VStack {
+                        Spacer()
+                            .frame(width: 10)
+                        VStack (alignment: .leading){
                             Text("\(item.weather.description)")
                             Text(item.dt)
                         }
@@ -62,6 +64,7 @@ struct IntervalScreen: View {
                 await manager.fetchForecastData(weatherUnit: self.weatherUnits)
             }
         }
+        .padding(.top, 25)
     }
 }
 
