@@ -19,6 +19,7 @@ class WeatherController: ObservableObject {
     
     @Published var weather: WeatherModel?
     private var weatherUnit: Units = .metric
+    @Published var showAlert = false
     
     ///  calling the api
     func fetchWeatherData() async {
@@ -56,7 +57,9 @@ class WeatherController: ObservableObject {
                                                     cloudPercentage: weatherData.clouds.all,
                                                     feelsLike: weatherData.main.feels_like)
                     }
-                } 
+                } else {
+                   
+                }
             }
             
             

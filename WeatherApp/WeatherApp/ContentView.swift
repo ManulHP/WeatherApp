@@ -20,11 +20,11 @@ struct ContentView: View {
                 }
             ForecastScreen()
                 .tabItem{
-                    Label("Forecast", systemImage: "house")
+                    Label("Forecast", systemImage: "goforward")
                 }
             IntervalScreen()
                 .tabItem{
-                    Label("Interval", systemImage: "house")
+                    Label("Interval", systemImage: "deskclock")
                 }
         }
     

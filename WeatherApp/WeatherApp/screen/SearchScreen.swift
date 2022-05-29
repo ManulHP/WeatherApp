@@ -76,9 +76,9 @@ struct SearchScreen: View {
                                 
                         }
                         .listRowSeparator(.hidden)
-                    
-                    
+                        
                     }
+                    
                     .listStyle(.plain)
                     .onChange(of: weatherUnits) {
                             _ in  Task{
